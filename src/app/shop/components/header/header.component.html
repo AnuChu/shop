@@ -1,0 +1,16 @@
+<header>
+  <div class="container">
+    <div class="wrapper-header">
+      <button (click)="switcher.switch = true" [ngClass]="{'active' : switcher.switch}">
+        Список товаров
+        <tui-svg [src]="tuiIconShoppingBag"></tui-svg>
+      </button>
+      <button (click)="switcher.switch = false" [ngClass]="{'active' : !switcher.switch}">
+        Корзина
+        <tui-svg [src]="tuiIconShoppingCart"></tui-svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+

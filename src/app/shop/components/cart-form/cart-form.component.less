@@ -1,0 +1,40 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+.basket-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--tui-base-03);
+  border-radius: 5px;
+  transition: 0.3s ease;
+  background: white;
+  width: 350px;
+  position: sticky;
+  top: 110px
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px
+}
+
+.summary {
+  border-top: 1px solid var(--tui-base-03);
+  border-bottom: 1px solid var(--tui-base-03);
+  padding: 15px 0;
+  margin: 20px 0;
+  font: var(--tui-font-heading-6)
+}
+
+.error {
+  color: #dc3545;
+  margin: 5px 10px 0 10px
+}
+
+
+.scroll {
+  .scrollbar-hidden();
+  height: 200px;
+}

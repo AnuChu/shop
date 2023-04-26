@@ -1,0 +1,8 @@
+<div class="basket-container">
+  <app-cart-form [total]="total"></app-cart-form>
+  <div class="list" *ngIf="products">
+    <h2 *ngIf="products?.length === 0" class="empty">Ваша корзина пуста</h2>
+    <app-card class="card" *ngFor="let product of products" [product]="product" (deleteEvent)="handleDelete()" (changeEvent)="handleChange()"></app-card>
+  </div>
+</div>
+

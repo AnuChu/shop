@@ -1,0 +1,10 @@
+<app-header></app-header>
+
+<div class="container main">
+
+  <h1> {{switcher.switch ? "Список товаров" : "Корзина" }} </h1>
+  <app-products *ngIf="switcher.switch"></app-products>
+  <app-cart *ngIf="!switcher.switch"></app-cart>
+
+</div>
+

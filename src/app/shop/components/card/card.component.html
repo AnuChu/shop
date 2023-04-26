@@ -1,0 +1,32 @@
+<div class="card">
+
+  <img [src]=product.image [alt]=product.title>
+  <h3 class="title-card">{{product.title}}</h3>
+
+  <div class="bottomPlug"></div>
+
+  <form class="bottom" [formGroup]="formAdd">
+    <div class="description">
+
+      <div class="price-block">
+        <div class="price-title">Цена:</div>
+        <div class="price">{{product.price}} {{ 'USD' | tuiCurrency }}</div>
+      </div>
+
+      <tui-input-count formControlName="count" tuiTextfieldSize="m" [max]="100" [min]="1">
+        Количество
+      </tui-input-count>
+
+    </div>
+
+    <button *ngIf="switcher.switch" (click)="handleAdd(product, this.formAdd.controls.count.value!)" tuiButton appearance="primary" size="m" class="button-add">
+      Добавить в корзину
+    </button>
+
+    <button *ngIf="!switcher.switch" (click)="handleDelete()" tuiButton appearance="secondary-destructive" size="m"
+            class="button-add">
+      Убрать из корзины
+    </button>
+
+  </form>
+</div>

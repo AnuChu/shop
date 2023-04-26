@@ -1,0 +1,65 @@
+<div class="basket-form">
+
+  <h2>Введите данные для заказа</h2>
+
+  <form [formGroup]="form" (submit)="submit()">
+    <div>
+      <tui-input [tuiTextfieldCleaner]="true" tuiTextfieldSize="m" formControlName="address">
+        Адрес доставки
+      </tui-input>
+      <div *ngIf="address.invalid && (address.touched || address.dirty)" class="error">
+        <div *ngIf="address.errors?.['required']">поле обязательно для заполнения</div>
+      </div>
+    </div>
+
+    <div>
+      <tui-input [tuiTextfieldCleaner]="true" tuiTextfieldSize="m" formControlName="name">
+        Ваше имя
+      </tui-input>
+      <div *ngIf="name.invalid && (name.touched || name.dirty)" class="error">
+        <div *ngIf="name.errors?.['pattern']">только буквы</div>
+        <div *ngIf="name.errors?.['required']">поле обязательно для заполнения</div>
+      </div>
+    </div>
+
+    <div>
+      <tui-input [tuiTextfieldCleaner]="true" tuiTextfieldSize="m" formControlName="email">
+        Адрес электронной почты
+      </tui-input>
+      <div *ngIf="email.invalid && (email.touched || email.dirty)" class="error">
+        <div *ngIf="email.errors?.['required']">поле обязательно для заполнения</div>
+        <div *ngIf="email.errors?.['email']">введите верный формат email</div>
+      </div>
+    </div>
+
+    <div>
+      <tui-select tuiTextfieldSize="m" formControlName="currency">
+        Страна
+        <cdk-virtual-scroll-viewport
+          *tuiDataList
+          tuiScrollable
+          class="scroll"
+          [itemSize]="40"
+        >
+          <tui-data-list>
+            <button *cdkVirtualFor="let item of countryNames" tuiOption [value]="item">
+              {{ item }}
+            </button>
+          </tui-data-list>
+        </cdk-virtual-scroll-viewport>
+      </tui-select>
+      <div *ngIf="currency.invalid && (currency.touched || currency.dirty)" class="error">
+        <div *ngIf="currency.errors?.['required']">выберите страну для расчета валюты</div>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="summary">
+    Итого: {{parseFloat(String(this.total * this.rate)).toFixed(2)}} {{ currencyName | tuiCurrency }}</div>
+
+  <button tuiButton type="button" appearance="primary" size="m" [disabled]="form.invalid">
+    Заказать
+  </button>
+
+</div>
